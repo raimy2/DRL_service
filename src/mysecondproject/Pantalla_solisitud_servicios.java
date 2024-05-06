@@ -89,7 +89,7 @@ public class Pantalla_solisitud_servicios extends javax.swing.JFrame {
 
         jLabel11.setText("Área/s Técnica a Solicitar:");
 
-        cedula.setText("000-000000-0");
+        cedula.setText("0");
 
         nombre_servicio.setText("Goma de carro vacía");
 
