@@ -1,6 +1,7 @@
 package mysecondproject;
 
 
+import com.mysql.cj.protocol.Resultset;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -26,7 +27,7 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
     }
 
    
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
@@ -61,6 +62,9 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
         referencia = new javax.swing.JTextField();
         borrar = new javax.swing.JToggleButton();
         contrasena = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +130,12 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
             }
         });
 
+        cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cedulaActionPerformed(evt);
+            }
+        });
+
         gmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gmailActionPerformed(evt);
@@ -157,12 +167,39 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("buscar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("actualizar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("eliminar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(borrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton1)
@@ -296,10 +333,15 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jToggleButton1)
                             .addComponent(borrar)
-                            .addComponent(jToggleButton2)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(referencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jToggleButton2)
+                            .addComponent(jButton4)
+                            .addComponent(jButton5)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(referencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -329,7 +371,7 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
-                .addGap(89, 89, 89))
+                .addGap(95, 95, 95))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -350,20 +392,20 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void edadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_edadStateChanged
+    private void edadStateChanged(javax.swing.event.ChangeEvent evt) {                                  
          etiValorDeslizador.setText("" + edad.getValue());
 
-    }//GEN-LAST:event_edadStateChanged
+    }                                 
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
          Pantalla_principal rc = new Pantalla_principal();
         rc.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }                                              
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         conexion mysql = new conexion();
         java.sql.Connection cn = mysql.Conect();
         
@@ -404,32 +446,121 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
         Pantalla_solisitud_servicios rc = new Pantalla_solisitud_servicios();
         rc.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }                                              
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }                                        
 
-    private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
+    private void borrarActionPerformed(java.awt.event.ActionEvent evt) {                                       
         borrar();
         // TODO add your handling code here:
-    }//GEN-LAST:event_borrarActionPerformed
+    }                                      
 
-    private void gmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gmailActionPerformed
+    private void gmailActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
-    }//GEN-LAST:event_gmailActionPerformed
+    }                                     
 
-    private void contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaActionPerformed
+    private void contrasenaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_contrasenaActionPerformed
+    }                                          
 
-    private void direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionActionPerformed
+    private void direccionActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_direccionActionPerformed
+    }                                         
 
-    private void referenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_referenciaActionPerformed
+    private void referenciaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_referenciaActionPerformed
+    }                                          
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+     PreparedStatement ps;
+        Resultset rs;
+        try{
+            conexion mysql = new conexion();
+        java.sql.Connection cn = mysql.Conect();
+        ps = cn.prepareStatement("SELECT * FROM clientes where Cedula_cliente = ?");
+        ps.setString(1,cedula.getText() );
+        
+        ps.executeQuery();
+        
+            if (rs.next()) {
+                nombre.setText("Nombres_cliente");
+                
+            }else 
+                
+                }catch(SQLException E){
+            System.out.println(E);
+        }
+    }                                        
+
+    private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+    }                                      
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        conexion mysql = new conexion();
+        java.sql.Connection cn = mysql.Conect();
+        
+        String Cedula_cliente = cedula.getText();
+        String Nombres_cliente = nombre.getText();
+        String Apellidos_cliente = apellido.getText();
+        String Edad_cliente = etiValorDeslizador.getText();
+        String Numero_telefono_cliente = numero_telefono.getText();
+        String Gmail_cliente = gmail.getText();
+        String Direccion_cliente = direccion.getText();
+        String Referencia_ubicacion_cliente = referencia.getText();
+        
+        String query = "update clientes set Nombres_cliente = ?,Apellidos_cliente = ?,Edad_cliente = ?,Numero_telefono_cliente = ?,Gmail_cliente = ?,Direccion_cliente = ?,Referencia_ubicacion_cliente = ? where Cedula_cliente = ?";
+        System.out.println(query);
+        try(PreparedStatement ps = cn.prepareStatement(query)){
+            
+            ps.setString(1,Nombres_cliente );
+            ps.setString(2,Apellidos_cliente );
+            ps.setString (3,Edad_cliente);
+            ps.setString(4,Numero_telefono_cliente );
+            ps.setString(5,Gmail_cliente );
+            ps.setString(6,Direccion_cliente );
+            ps.setString(7,Referencia_ubicacion_cliente);
+            ps.setString(8, Cedula_cliente);
+            
+            if (Cedula_cliente == null) {
+                JOptionPane.showConfirmDialog(null, "la cedula esta vacia");
+                
+                
+            }
+        ps.executeUpdate();
+        JOptionPane.showConfirmDialog(null, "datos actualizados");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "error al insertar");
+            System.out.println(e);
+        }
+    }                                        
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+               conexion mysql = new conexion();
+        java.sql.Connection cn = mysql.Conect();
+        
+        String Cedula_cliente = cedula.getText();
+        
+        String query = "delete from clientes where Cedula_cliente = ?";
+        System.out.println(query);
+        try(PreparedStatement ps = cn.prepareStatement(query)){
+            
+            ps.setString(1, Cedula_cliente);
+            
+            if (Cedula_cliente == null) {
+                JOptionPane.showConfirmDialog(null, "la cedula esta vacia");
+                
+                
+            }
+        ps.executeUpdate();
+        JOptionPane.showConfirmDialog(null, "datos actualizados");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "error al insertar");
+            System.out.println(e);
+        }
+    }                                        
 
   /**
      * @param args the command line arguments
@@ -468,7 +599,7 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
         
     }   
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JTextField apellido;
     private javax.swing.JToggleButton borrar;
     private javax.swing.JTextField cedula;
@@ -479,6 +610,9 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
     private javax.swing.JTextField gmail;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -501,7 +635,7 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField numero_telefono;
     private javax.swing.JTextField referencia;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
     private String getValue() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -518,4 +652,6 @@ public class Pantalla_registro_cliente extends javax.swing.JFrame {
         referencia.setText("");
          contrasena.setText("");  
     }
+}
+
 }
